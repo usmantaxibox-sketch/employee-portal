@@ -1,4 +1,4 @@
-var API = "https://script.google.com/macros/s/AKfycbzVz_Y3PhbRI7oC87am4seZA68P210faMF4pSv46sDZMhlwLv1zfkYZr5zZL57W0wJPKw/exec";
+var API = "11tuFyLc38xwzhQBz1c8QQjNMxtAGI0ZlDGPakcErSRw";
 
 function login() {
     var id = document.getElementById("id").value;
@@ -83,4 +83,5 @@ function upload() {
 function logout() {
     localStorage.clear();
     window.location = "index.html";
+
 }
