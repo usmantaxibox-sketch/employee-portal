@@ -1,4 +1,4 @@
-var API = "11tuFyLc38xwzhQBz1c8QQjNMxtAGI0ZlDGPakcErSRw";
+var API = "https://docs.google.com/spreadsheets/d/11tuFyLc38xwzhQBz1c8QQjNMxtAGI0ZlDGPakcErSRw/edit?usp=sharing";
 
 function login() {
     var id = document.getElementById("id").value;
@@ -85,3 +85,4 @@ function logout() {
     window.location = "index.html";
 
 }
+
