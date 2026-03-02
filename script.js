@@ -1,4 +1,4 @@
-var API = "11tuFyLc38xwzhQBz1c8QQjNMxtAGI0ZlDGPakcErSRw";
+var API = "https://script.google.com/macros/s/AKfycbzVdcKLX1Z4pQEMQH609wuP0F6ean2Q3jUHextDaQx9dMRk4IemaNXSJwA-YVcV6XIWwg/exec";
 
 function login() {
     var id = document.getElementById("id").value;
@@ -85,5 +85,6 @@ function logout() {
     window.location = "index.html";
 
 }
+
 
 
