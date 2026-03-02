@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Employee Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <div class="card">
+        <h2>Welcome <span id="name"></span></h2>
+
+        <p>Performance: <span id="performance"></span>%</p>
+        <p>Record: <span id="record"></span></p>
+
+        <a id="pdfLink" target="_blank">View PDF</a>
+
+        <canvas id="chart"></canvas>
+
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script>loadEmployee();</script>
+</body>
+
+</html>
