@@ -47,3 +47,55 @@ function createSalary(){
 
   });
 }
+function calculateAndShow(rider){
+
+  const earnings =
+    Number(rider.PickupAmount) +
+    Number(rider.DropoffAmount) +
+    Number(rider.ExtraKMPay) +
+    Number(rider.BatchIncentive) +
+    Number(rider.SpecialVehiclePay) +
+    Number(rider.OrderIncentive);
+
+  const deductions =
+    Number(rider.Salaf) +
+    Number(rider.MinusSalary) +
+    Number(rider.HealthInsurance) +
+    Number(rider.TalabatClosing) +
+    Number(rider.BikeInstallment) +
+    Number(rider.CompanyBikeRent) +
+    Number(rider.TrafficFine) +
+    Number(rider.PendingDues) +
+    Number(rider.BrandingBox) +
+    Number(rider.EquipmentDeduction) +
+    Number(rider.Medical);
+
+  const total = earnings - deductions;
+
+  const html = `
+    <div id="salaryCard" style="
+        background:white;
+        padding:30px;
+        width:400px;
+        border-radius:15px;
+        box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    ">
+
+      <h2>Salary Slip</h2>
+      <p><b>Rider ID:</b> ${rider.RiderID}</p>
+      <p><b>Worked Hours:</b> ${rider.WorkedHours}</p>
+
+      <hr>
+
+      <p><b>Total Earnings:</b> ${earnings}</p>
+      <p><b>Total Deductions:</b> ${deductions}</p>
+
+      <h3>Net Salary: ${total}</h3>
+
+      <button onclick="downloadPDF()">Download PDF</button>
+
+    </div>
+  `;
+
+  document.getElementById("salaryContainer").innerHTML = html;
+}
