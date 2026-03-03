@@ -50,6 +50,7 @@ body::after {
   background: linear-gradient(90deg, #a855f7, #ec4899);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  url:"https://drive.google.com/file/d/1SsCLRoRG-bCtiF6x6Ibi9h48XO_g1RYj/view?usp=sharing"
 }
 
 /* ===== HERO SECTION ===== */
@@ -135,3 +136,4 @@ input {
   border-radius: 20px;
   padding: 30px;
 }
+
