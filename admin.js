@@ -99,3 +99,7 @@ function calculateAndShow(rider){
 
   document.getElementById("salaryContainer").innerHTML = html;
 }
+function downloadPDF(){
+  const element = document.getElementById("salaryCard");
+  html2pdf().from(element).save("SalarySlip.pdf");
+}
