@@ -9,12 +9,23 @@ function login(){
   .then(res => res.json())
   .then(data => {
 
-     const user = data.users.find(u => 
-        u.UserID == id && u.Password == pass
-     );
+     const user = data.users.find(u => u.UserID == id);
 
      if(!user){
-        alert("Invalid Login");
+        alert("User not found");
+        return;
+     }
+
+     if(user.Status === "blocked"){
+        alert("Account Blocked. Contact Admin.");
+        return;
+     }
+
+     if(user.Password !== pass){
+
+        alert("Wrong Password");
+
+        // Increase wrong attempts locally (sheet update requires POST API — optional advanced)
         return;
      }
 
