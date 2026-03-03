@@ -28,3 +28,22 @@ function renderPerformance(performance){
 
     document.getElementById("performanceTable").innerHTML = html;
 }
+function createSalary(){
+
+  const riderID = document.getElementById("salaryRiderID").value;
+
+  fetch(API)
+  .then(res => res.json())
+  .then(data => {
+
+    const rider = data.salary.find(r => r.RiderID == riderID);
+
+    if(!rider){
+      alert("Rider Not Found");
+      return;
+    }
+
+    calculateAndShow(rider);
+
+  });
+}
