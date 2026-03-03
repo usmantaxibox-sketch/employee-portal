@@ -1,8 +1,8 @@
-<body><script>
-if(sessionStorage.getItem("adminLoggedIn") !== "true"){
-   window.location.href = "admin-login.html";
+<script>
+if (sessionStorage.getItem("role") !== "admin") {
+    window.location.href = "login.html";
 }
-</script></body>
+</script>
 <h2>Generate Salary Slip</h2>
 
 <input type="text" id="salaryRiderID" placeholder="Enter Rider ID">
@@ -13,6 +13,13 @@ if(sessionStorage.getItem("adminLoggedIn") !== "true"){
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <button onclick="logout()">Logout</button>
+
+<script>
+function logout(){
+    sessionStorage.clear();
+    window.location.href = "login.html";
+}
+</script>
 
 <script>
 function logout(){
