@@ -1,43 +1,137 @@
-body {
-    font-family: Arial;
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+/* ===== GLOBAL ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-.card {
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(10px);
-  padding:30px;
-  border-radius:15px;
-  width:90%;
-  max-width:400px;
-  text-align:center;
-  color:white;
+body {
+  background: radial-gradient(circle at 30% 20%, #1a1a3a, #0d0d1f 60%);
+  color: #ffffff;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
+
+/* ===== GLOW BACKGROUND EFFECT ===== */
+body::before {
+  content: "";
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(168,85,247,0.4), transparent 70%);
+  top: -200px;
+  right: -200px;
+  z-index: -1;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(236,72,153,0.3), transparent 70%);
+  bottom: -200px;
+  left: -200px;
+  z-index: -1;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 60px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 600;
+  background: linear-gradient(90deg, #a855f7, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #ffffff, #a855f7, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #b5b5c3;
+}
+
+/* ===== BUTTON ===== */
+.btn {
+  margin-top: 40px;
+  padding: 14px 40px;
+  border-radius: 30px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  background: linear-gradient(90deg, #a855f7, #ec4899);
+  color: white;
+  transition: 0.3s ease;
+  box-shadow: 0 0 20px rgba(168,85,247,0.6);
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(236,72,153,0.8);
+}
+
+/* ===== GLASS CARD ===== */
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 40px;
+  width: 400px;
+  margin: 80px auto;
+  box-shadow: 0 0 40px rgba(168,85,247,0.2);
 }
 
 input {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0;
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: rgba(255,255,255,0.08);
+  color: white;
 }
 
-button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    background: #2a5298;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
+/* ===== DASHBOARD ===== */
+.dashboard {
+  display: flex;
+  padding: 40px;
+  gap: 30px;
 }
 
-button:hover {
-    background: #1e3c72;
+.sidebar {
+  width: 250px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 30px;
+}
 
+.content {
+  flex: 1;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 30px;
 }
