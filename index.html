@@ -1,58 +1,50 @@
 <!DOCTYPE html>
 <html>
-<header class="navbar">
-    <div class="logo">
-        <img src="assets/logo.png" alt="TaxiBox Logo">
-        <span>TaxiBox</span>
-    </div>
 
-    <nav class="nav-links">
-        <a href="#about">About Us</a>
-        <a href="#career">Career</a>
-        <a href="#contact">Contact Us</a>
-    </nav>
-</header>
 <head>
     <title>TaxiBox</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <div class="navbar">
-  <div class="logo">TaxiBox</div>
-</div>
+<header class="navbar" id="navbar">
+    <div class="logo">TaxiBox</div>
 
-<div class="hero">
-  <h1>Welcome Heros Land</h1>
-  <p>Delivering happiness to your home.</p>
-  <button class="btn" onclick="goLogin()">Sign In</button>
-</div>
+    <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#career">Career</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
 
-    <script>
-function goLogin(){
-  window.location.href = "login.html";
-}
-</script>
-</body>
-    <section id="about" class="info-section">
+<section class="hero">
+    <h1>Welcome Heros Land</h1>
+    <p>Delivering happiness to your home.</p>
+    <button class="btn">Sign In</button>
+</section>
+
+<section id="about" class="section">
     <h2>About Us</h2>
     <p>TaxiBox is committed to delivering excellence and performance tracking for all riders.</p>
 </section>
 
-<section id="career" class="info-section">
+<section id="career" class="section dark">
     <h2>Career</h2>
     <p>Join our team and grow with us. We value dedication and performance.</p>
 </section>
 
-<section id="contact" class="info-section">
+<section id="contact" class="section">
     <h2>Contact Us</h2>
     <p>Email: support@taxibox.com</p>
     <p>Phone: +973 XXXXXXXX</p>
 </section>
 
+<script src="script.js"></script>
+</body>
+
 
 </html>
+
 
 
 
