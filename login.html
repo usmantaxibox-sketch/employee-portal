@@ -11,23 +11,11 @@
     <div class="role-badge">Employee Portal</div>
     <h2>Employee Login</h2>
 
-    <input type="text" id="userID" placeholder="User ID">
-    <input type="password" id="password" placeholder="Password">
-    <button onclick="login()" class="login-btn">Login</button>
+   <input type="text" id="userID" placeholder="User ID">
+<input type="password" id="password" placeholder="Password">
+<button onclick="login()">Login</button>
+
+<script src="login.js"></script>
 </div>
-
-<script>
-function login() {
-    const id = document.getElementById("empId").value;
-    const password = document.getElementById("password").value;
-
-    if (id === "EMP001" && password === "1234") {
-        window.location.href = "employee.html";
-    } else {
-        alert("Invalid Employee ID or Password");
-    }
-}
-</script>
-
 </body>
 </html>
