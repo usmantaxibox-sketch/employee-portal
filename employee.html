@@ -8,7 +8,11 @@
 </head>
 
 <body>
-
+<script>
+if (sessionStorage.getItem("role") !== "rider") {
+    window.location.href = "login.html";
+}
+</script>
     <div class="card">
         <h2>Welcome <span id="name"></span></h2>
 
@@ -20,6 +24,12 @@
         <canvas id="chart"></canvas>
 
         <button onclick="logout()">Logout</button>
+        <script>
+function logout(){
+    sessionStorage.clear();
+    window.location.href = "login.html";
+}
+</script>
     </div>
 
     <script src="script.js"></script>
@@ -42,4 +52,5 @@ fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vShqOBEBnFtC0WGU2e1KkZyan
 
 
 </html>
+
 
