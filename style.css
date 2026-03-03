@@ -13,7 +13,7 @@ body {
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
 }
 
-/* ===== CARD ===== */
+/* ===== LOGIN CARD ===== */
 .login-card {
     background: white;
     padding: 40px;
@@ -26,6 +26,17 @@ body {
 .login-card h2 {
     margin-bottom: 25px;
     color: #2c5364;
+}
+
+/* ===== ROLE BADGE ===== */
+.role-badge {
+    background: #2575fc;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    display: inline-block;
+    margin-bottom: 15px;
 }
 
 /* ===== INPUTS ===== */
@@ -62,16 +73,6 @@ body {
     transform: scale(1.05);
 }
 
-/* ===== TITLE BADGE ===== */
-.role-badge {
-    background: #2575fc;
-    color: white;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 12px;
-    display: inline-block;
-    margin-bottom: 15px;
-}
 /* ===== NAVBAR ===== */
 .navbar {
     background: #111;
