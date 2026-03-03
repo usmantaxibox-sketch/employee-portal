@@ -23,7 +23,7 @@ body {
 }
 
 .navbar a, .login-nav-btn {
-    color: white;
+    color: gray;
     text-decoration: none;
     margin-left: 25px;
     background: none;
@@ -165,3 +165,4 @@ footer {
         gap: 40px;
     }
 }
+
