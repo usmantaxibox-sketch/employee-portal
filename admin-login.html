@@ -1,35 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Admin Login</title>
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body style="display:flex;justify-content:center;align-items:center;height:100vh;background:#111;color:white;font-family:Arial;">
+<body>
 
-  <div style="background:#222;padding:40px;border-radius:10px;">
+<div class="login-container">
+    <div class="portal-badge">Admin Portal</div>
     <h2>Admin Login</h2>
 
-    <input type="password" id="adminPass" placeholder="Enter Password"
-           style="padding:10px;width:200px;margin-bottom:10px;"><br>
+    <form id="adminLoginForm">
+        <input type="text" id="adminId" placeholder="Enter Admin ID" required>
+        <input type="password" id="adminPassword" placeholder="Enter Password" required>
+        <button type="submit">Login</button>
+    </form>
 
-    <button onclick="checkAdmin()" 
-            style="padding:10px 20px;background:blue;color:white;border:none;">
-      Login
-    </button>
-  </div>
+    <p id="errorMessage" style="color:red;"></p>
+</div>
 
-<script>
-function checkAdmin(){
-
-   const pass = document.getElementById("adminPass").value;
-
-   if(pass === "admin123"){   // change your password here
-      sessionStorage.setItem("adminLoggedIn", "true");
-      window.location.href = "admin-dashboard.html";
-   }else{
-      alert("Wrong Password!");
-   }
-}
-</script>
+<script src="admin.js"></script>
 
 </body>
 </html>
