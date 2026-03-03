@@ -1,3 +1,4 @@
+alert("JS Connected");
 document.getElementById("adminLoginForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
