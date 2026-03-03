@@ -16,8 +16,21 @@
 </div>
 
 <script>
+const API = "PASTE_YOUR_WEB_APP_URL_HERE";  // <-- IMPORTANT
+
 function login(){
-  alert("Login button working");
+  const id = document.getElementById("empId").value;
+  const password = document.getElementById("password").value;
+
+  fetch(API + "?action=login&id=" + id + "&password=" + password)
+  .then(res => res.text())
+  .then(data => {
+      if(data === "success"){
+          window.location.href = "dashboard.html?id=" + id;
+      } else {
+          alert("Invalid ID or Password");
+      }
+  });
 }
 </script>
 
