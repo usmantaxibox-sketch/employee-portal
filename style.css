@@ -193,6 +193,73 @@ input {
     height: 35px;
   }
 }
+/* HEADER */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(10, 10, 30, 0.9);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff4fd8;
+}
+
+/* Sections */
+.info-section {
+    padding: 120px 20px;
+    text-align: center;
+    background: #0c0c1f;
+    color: white;
+}
+
+.info-section h2 {
+    margin-bottom: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .nav-links {
+        margin-top: 10px;
+    }
+
+    .nav-links a {
+        margin: 10px;
+        display: inline-block;
+    }
+}
+
 
 
 
