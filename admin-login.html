@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Login</title>
-    <link rel="stylesheet" href="style.css">
+  <title>Admin Login</title>
 </head>
+<body style="display:flex;justify-content:center;align-items:center;height:100vh;background:#111;color:white;font-family:Arial;">
 
-<body class="login-body">
+  <div style="background:#222;padding:40px;border-radius:10px;">
+    <h2>Admin Login</h2>
 
-<div class="login-card">
-    <div class="role-badge" style="background:#ff4b2b;">Admin Panel</div>
-    <h2>Administrator Login</h2>
+    <input type="password" id="adminPass" placeholder="Enter Password"
+           style="padding:10px;width:200px;margin-bottom:10px;"><br>
 
-    <input type="text" id="adminUser" placeholder="Admin Username">
-    <input type="password" id="adminPass" placeholder="Password">
-
-    <button onclick="adminLogin()" class="login-btn">Login</button>
-</div>
+    <button onclick="checkAdmin()" 
+            style="padding:10px 20px;background:blue;color:white;border:none;">
+      Login
+    </button>
+  </div>
 
 <script>
-function adminLogin() {
-    const user = document.getElementById("adminUser").value;
-    const pass = document.getElementById("adminPass").value;
+function checkAdmin(){
 
-    if (user === "admin" && pass === "1234") {
-        localStorage.setItem("isAdminLoggedIn", "true");
-        window.location.href = "admin.html";
-    } else {
-        alert("Invalid Admin Login");
-    }
+   const pass = document.getElementById("adminPass").value;
+
+   if(pass === "admin123"){   // change your password here
+      sessionStorage.setItem("adminLoggedIn", "true");
+      window.location.href = "admin-dashboard.html";
+   }else{
+      alert("Wrong Password!");
+   }
 }
 </script>
 
