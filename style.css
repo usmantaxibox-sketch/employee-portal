@@ -1,126 +1,74 @@
-* {
+/* ===== GLOBAL ===== */
+body {
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
     font-family: 'Segoe UI', sans-serif;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background: #0f0c29;
-    color: white;
-}
-
-/* NAVBAR */
-.navbar {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    padding: 20px 60px;
+/* ===== LOGIN BACKGROUND ===== */
+.login-body {
+    height: 100vh;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    background: transparent;
-    transition: 0.3s ease;
-    z-index: 1000;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
 }
 
-.navbar.scrolled {
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(10px);
+/* ===== CARD ===== */
+.login-card {
+    background: white;
+    padding: 40px;
+    width: 350px;
+    border-radius: 15px;
+    box-shadow: 0px 15px 35px rgba(0,0,0,0.3);
+    text-align: center;
 }
 
-.logo {
-    font-size: 22px;
-    font-weight: bold;
+.login-card h2 {
+    margin-bottom: 25px;
+    color: #2c5364;
 }
 
-.nav-links {
-    display: flex;
-    gap: 30px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
+/* ===== INPUTS ===== */
+.login-card input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
     transition: 0.3s;
 }
 
-.nav-links a:hover {
-    color: #c084fc;
+.login-card input:focus {
+    border-color: #2c5364;
+    outline: none;
+    box-shadow: 0 0 8px rgba(44,83,100,0.4);
 }
 
-/* HERO */
-.hero {
-    height: 100vh;
-    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-}
-
-.hero h1 {
-    font-size: 60px;
-    margin-bottom: 20px;
-}
-
-.hero p {
-    font-size: 20px;
-    margin-bottom: 30px;
-    opacity: 0.8;
-}
-
-.btn {
-    padding: 15px 35px;
+/* ===== BUTTON ===== */
+.login-btn {
+    width: 100%;
+    padding: 12px;
     border: none;
-    border-radius: 30px;
-    background: linear-gradient(45deg, #a855f7, #ec4899);
+    border-radius: 25px;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
     color: white;
-    font-size: 16px;
+    font-size: 15px;
     cursor: pointer;
     transition: 0.3s;
 }
 
-.btn:hover {
+.login-btn:hover {
     transform: scale(1.05);
 }
 
-/* SECTIONS */
-.section {
-    padding: 120px 20px;
-    text-align: center;
-}
-
-.section h2 {
-    font-size: 40px;
-    margin-bottom: 20px;
-}
-
-.section p {
-    max-width: 700px;
-    margin: auto;
-    font-size: 18px;
-    opacity: 0.85;
-}
-
-.section.dark {
-    background: #141132;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 38px;
-    }
-
-    .nav-links {
-        display: none;
-    }
+/* ===== TITLE BADGE ===== */
+.role-badge {
+    background: #2575fc;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    display: inline-block;
+    margin-bottom: 15px;
 }
