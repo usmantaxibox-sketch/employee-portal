@@ -16,21 +16,15 @@
 </div>
 
 <script>
-const API = "PASTE_YOUR_WEB_APP_URL_HERE";  // <-- IMPORTANT
+function login() {
+    const id = document.getElementById("empId").value;
+    const password = document.getElementById("password").value;
 
-function login(){
-  const id = document.getElementById("empId").value;
-  const password = document.getElementById("password").value;
-
-  fetch(API + "?action=login&id=" + id + "&password=" + password)
-  .then(res => res.text())
-  .then(data => {
-      if(data === "success"){
-          window.location.href = "employee.html";
-      } else {
-          alert("Invalid ID or Password");
-      }
-  });
+    if (id === "EMP001" && password === "1234") {
+        window.location.href = "employee.html";
+    } else {
+        alert("Invalid Employee ID or Password");
+    }
 }
 </script>
   
