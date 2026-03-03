@@ -75,7 +75,7 @@ body::after {
   font-size: 20px;
   font-weight: 600;
   background: linear-gradient(90deg, #a855f7, #ec4899);
-  -webkit-background-clip: text;
+  -webkit-background-clip: img;
   -webkit-text-fill-color: transparent;
 }
 
@@ -193,6 +193,7 @@ input {
     height: 35px;
   }
 }
+
 
 
 
