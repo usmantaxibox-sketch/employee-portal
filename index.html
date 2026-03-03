@@ -1,55 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>TaxiBox | Corporate Portal</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaxiBox | Employee Portal</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<nav>
+<!-- ===== NAVBAR ===== -->
+<header class="navbar">
     <div class="logo">TaxiBox</div>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#career">Career</a>
+        <a href="#contact">Contact</a>
+        <a href="admin-login.html" class="admin-link">Admin</a>
+    </nav>
+</header>
 
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="login.html">Employee Login</a>
-        <a href="admin.html" class="admin-btn">Admin</a>
-    </div>
-</nav>
-
+<!-- ===== HERO SECTION ===== -->
 <section class="hero">
-    <div class="glass-card">
-        <h1>Empowering Every Delivery</h1>
-        <p>Performance. Precision. Professionalism.</p>
-        <a href="login.html" class="btn-primary">Access Hero Portal</a>
-    </div>
+    <h1>Welcome to TaxiBox</h1>
+    <p>Delivering happiness to your home.</p>
+    <a href="login.html" class="hero-btn">Employee Sign In</a>
 </section>
 
-<section id="stats" class="stats-section">
-    <div class="stat">
-        <h2 id="riders">0</h2>
-        <p>Total Riders</p>
-    </div>
-    <div class="stat">
-        <h2 id="deliveries">0</h2>
-        <p>Deliveries Completed</p>
-    </div>
-    <div class="stat">
-        <h2 id="cities">0</h2>
-        <p>Cities Covered</p>
-    </div>
-</section>
-
+<!-- ===== ABOUT ===== -->
 <section id="about" class="section">
-    <h2>About TaxiBox</h2>
-    <p>
-        TaxiBox is redefining delivery performance management through
-        intelligent tracking systems and digital workforce optimization.
-    </p>
+    <h2>About Us</h2>
+    <p>TaxiBox is committed to delivering excellence and performance tracking for all riders.</p>
 </section>
 
-<section id="contact" class="section dark">
+<!-- ===== CAREER ===== -->
+<section id="career" class="section light">
+    <h2>Career</h2>
+    <p>Join our team and grow with us. We value dedication and performance.</p>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="section">
     <h2>Contact Us</h2>
     <p>Email: support@taxibox.com</p>
     <p>Phone: +973 XXXXXXXX</p>
@@ -59,104 +48,5 @@
     © 2026 TaxiBox. All Rights Reserved.
 </footer>
 
-<!-- LOGIN MODAL -->
-<div class="modal" id="loginModal">
-    <div class="modal-content">
-        <span class="close" onclick="closeLogin()">×</span>
-        <h2>Employee Login</h2>
-        <input type="text" id="empId" placeholder="Employee ID">
-        <input type="password" id="password" placeholder="Password">
-        <button class="primary-btn" onclick="login()">Login</button>
-    </div>
-</div>
-
-<script>
-function openLogin() {
-    document.getElementById("loginModal").style.display = "flex";
-}
-
-function closeLogin() {
-    document.getElementById("loginModal").style.display = "none";
-}
-
-function login() {
-    const id = document.getElementById("empId").value;
-    const password = document.getElementById("password").value;
-
-    if (id === "EMP001" && password === "1234") {
-        window.location.href = "employee.html";
-    } else {
-        alert("Invalid credentials");
-    }
-}
-
-/* Animated Counter */
-function animateValue(id, start, end, duration) {
-    let range = end - start;
-    let current = start;
-    let increment = end > start ? 1 : -1;
-    let stepTime = Math.abs(Math.floor(duration / range));
-    let obj = document.getElementById(id);
-
-    let timer = setInterval(function () {
-        current += increment;
-        obj.textContent = current;
-        if (current == end) {
-            clearInterval(timer);
-        }
-    }, stepTime);
-}
-
-window.onload = function () {
-    animateValue("riders", 0, 250, 1500);
-    animateValue("deliveries", 0, 5000, 2000);
-    animateValue("cities", 0, 12, 1500);
-};
-</script>
-    <!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
-
-<script>
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyA8Mdxv40uKhkLwjlAe1jRxnr1G6Wj08xc",
-  authDomain: "taxibox-portal.firebaseapp.com",
-  projectId: "taxibox-portal",
-  storageBucket: "taxibox-portal.firebasestorage.app",
-  messagingSenderId: "366930427266",
-  appId: "1:366930427266:web:adb538d354a9bbb3b0e39b"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-function login() {
-  const email = document.getElementById("empId").value;
-  const password = document.getElementById("password").value;
-
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-
-      if (email === "admin@taxibox.com") {
-        window.location.href = "admin.html";
-      } else {
-        window.location.href = "employee.html";
-      }
-
-    })
-    .catch((error) => {
-      alert("Invalid Login");
-    });
-}
-</script>
-
 </body>
 </html>
-
-
-
-
-
