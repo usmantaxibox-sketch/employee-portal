@@ -34,9 +34,9 @@ function login() {
 
             // Redirect by role
             if (user.Role.toLowerCase() === "admin") {
-                window.location.href = "admin-dashboard.html";
+                window.location.href = "employee.html";
             } else {
-                window.location.href = "rider-dashboard.html";
+                window.location.href = "employee.html";
             }
 
         })
