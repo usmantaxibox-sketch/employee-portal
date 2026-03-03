@@ -5,7 +5,11 @@
     <title>TaxiBox Management</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
+<script>
+if (localStorage.getItem("isAdminLoggedIn") !== "true") {
+    window.location.href = "login.html";
+}
+</script>
 <body>
 
     <div class="card">
@@ -30,3 +34,4 @@
 
 
 </html>
+
