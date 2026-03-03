@@ -1,34 +1,87 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Login</title>
-    <link rel="stylesheet" href="style.css">
+    <title>TaxiBox Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="admin-style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body class="login-body">
+<body>
 
-<div class="login-card">
-    <div class="role-badge" style="background:#ff4b2b;">Admin Panel</div>
-    <h2>Administrator Login</h2>
+<div class="sidebar">
+    <h2>🚖 TaxiBox</h2>
+    <a href="#">Dashboard</a>
+    <a href="#">Riders</a>
+    <a href="#">Reports</a>
+    <a href="#" onclick="logout()">Logout</a>
+</div>
 
-    <input type="text" id="adminUser" placeholder="Admin Username">
-    <input type="password" id="adminPass" placeholder="Password">
+<div class="main">
 
-    <button onclick="adminLogin()" class="login-btn">Login</button>
+    <div class="topbar">
+        <h1>Admin Dashboard</h1>
+        <input type="text" id="searchId" placeholder="Search Employee ID">
+        <button onclick="searchEmployee()">Search</button>
+    </div>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Total Riders</h3>
+            <p>250</p>
+        </div>
+        <div class="card">
+            <h3>Total Deliveries</h3>
+            <p>5000</p>
+        </div>
+        <div class="card">
+            <h3>Active Cities</h3>
+            <p>12</p>
+        </div>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="performanceChart"></canvas>
+    </div>
+
+    <div id="result" class="result-box"></div>
+
 </div>
 
 <script>
-function adminLogin() {
-    const user = document.getElementById("adminUser").value;
-    const pass = document.getElementById("adminPass").value;
+if (!localStorage.getItem("isAdminLoggedIn")) {
+    window.location.href = "admin-login.html";
+}
 
-    if (user === "admin" && pass === "1234") {
-        localStorage.setItem("isAdminLoggedIn", "true");
-        window.location.href = "admin.html";
+function logout() {
+    localStorage.removeItem("isAdminLoggedIn");
+    window.location.href = "admin-login.html";
+}
+
+function searchEmployee() {
+    const id = document.getElementById("searchId").value;
+    const result = document.getElementById("result");
+
+    if (id === "EMP001") {
+        result.innerHTML = "<h3>Employee Found</h3><p>Performance: 92%</p><p>Deliveries: 340</p>";
     } else {
-        alert("Invalid Admin Login");
+        result.innerHTML = "<p>No record found</p>";
     }
 }
+
+/* Chart */
+const ctx = document.getElementById('performanceChart').getContext('2d');
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+        datasets: [{
+            label: 'Weekly Deliveries',
+            data: [50,60,55,70,80,90,65],
+            backgroundColor: '#00c6ff'
+        }]
+    }
+});
 </script>
 
 </body>
