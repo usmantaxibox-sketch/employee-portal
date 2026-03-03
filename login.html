@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Login - Employee Portal</title>
-  <link rel="stylesheet" href="style.css">
+    <title>Employee Login</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-<div class="card">
-  <h2 style="text-align:center;">Employee Login</h2>
+<body class="login-body">
 
-  <input type="text" id="empId" placeholder="Employee ID">
-  <input type="password" id="password" placeholder="Password">
+<div class="login-card">
+    <div class="role-badge">Employee Portal</div>
+    <h2>Employee Login</h2>
 
-  <button class="btn" onclick="login()">Login</button>
+    <input type="text" id="empId" placeholder="Employee ID">
+    <input type="password" id="password" placeholder="Password">
+
+    <button onclick="login()" class="login-btn">Login</button>
 </div>
 
 <script>
@@ -27,7 +29,6 @@ function login() {
     }
 }
 </script>
-  
 
 </body>
 </html>
