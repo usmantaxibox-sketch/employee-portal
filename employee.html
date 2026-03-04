@@ -1,56 +1,55 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>TaxiBox Heros</title>
+    <title>Employee Dashboard</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body>
+<body class="login-body">
+
 <script>
 if (sessionStorage.getItem("role") !== "rider") {
     window.location.href = "login.html";
 }
 </script>
-    <div class="card">
-        <h2>Welcome <span id="name"></span></h2>
 
-        <p>Performance: <span id="performance"></span>%</p>
-        <p>Record: <span id="record"></span></p>
+<div class="login-card">
+    <h2>Welcome <span id="name"></span></h2>
 
-        <a id="pdfLink" target="_blank">View PDF</a>
+    <p>Performance: <span id="performance"></span></p>
+    <p>Record: <span id="record"></span></p>
 
-        <canvas id="chart"></canvas>
+    <a id="pdfLink" target="_blank">View PDF</a>
+    <br><br>
 
-        <button onclick="logout()">Logout</button>
-        <script>
+    <button class="login-btn" onclick="logout()">Logout</button>
+</div>
+
+<script>
 function logout(){
     sessionStorage.clear();
     window.location.href = "login.html";
 }
-</script>
-    </div>
 
-    <script src="script.js"></script>
-    <script>loadEmployee();</script>
-    <script>
-fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vShqOBEBnFtC0WGU2e1KkZyan7PPUJwq7eN6wHSbnDaE-cdamScQSNKrhy6C0xkKnFj5HKMo7cj4f4Z/pub?output=csv")
-.then(response => response.text())
+const employeeId = sessionStorage.getItem("employeeId");
+
+fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vRcyRF_oS_SGrk-F-Urp3YhtwbPG2FESw0CfEh7tS-pZ9fJhY6VPLTIGVD1wLD-VZE16htkQMBJ0RNa/pub?output=csv")
+.then(res => res.text())
 .then(data => {
     const rows = data.split("\n");
+
     rows.forEach(row => {
         const cols = row.split(",");
-        if(cols[0] === "EMP001") {
-            document.getElementById("performance").innerHTML =
-                "Performance: " + cols[2] + "<br>Deliveries: " + cols[3];
+
+        if(cols[0] === employeeId){
+            document.getElementById("name").innerText = cols[1];
+            document.getElementById("performance").innerText = cols[2];
+            document.getElementById("record").innerText = cols[3];
+            document.getElementById("pdfLink").href = cols[4];
         }
     });
 });
 </script>
+
 </body>
-
-
 </html>
-
-
