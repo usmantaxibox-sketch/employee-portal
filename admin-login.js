@@ -11,10 +11,11 @@ document.getElementById("adminLoginForm").addEventListener("submit", function(e)
         .then(response => response.json())
         .then(data => {
 
-            console.log("Sheet Data:", data);
+            console.log("full Data:", data);
 
             // 🔥 IMPORTANT FIX HERE
             const usersArray = data.data || data.users || data;
+            console.log("USERS ARRAY:", usersArray)
 
             if (!Array.isArray(usersArray)) {
                 errorMessage.textContent = "Invalid data format!";
