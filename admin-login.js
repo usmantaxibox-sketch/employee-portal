@@ -19,13 +19,27 @@ document.getElementById("adminLoginForm").addEventListener("submit", function (e
                 errorMessage.textContent = "Invalid data format!";
                 return;
             }
+            const adminUser = usersArray.find(user => {
 
-            const adminUser = usersArray.find(user =>
-                String(user.UserID).trim() === userId &&
-                String(user.Password).trim() === password &&
-                String(user.Role).toLowerCase() === "admin" &&
-                String(user.Status).toLowerCase() === "active"
-            );
+    console.log("Checking user:", user);
+
+    console.log(
+        "Sheet ID:", user.UserID,
+        "Entered ID:", userId
+    );
+
+    console.log(
+        "Sheet Pass:", user.Password,
+        "Entered Pass:", password
+    );
+
+    return (
+        String(user.UserID).trim() === userId &&
+        String(user.Password).trim() === password &&
+        String(user.Role).toLowerCase() === "admin" &&
+        String(user.Status).toLowerCase() === "active"
+    );
+});
 
             if (adminUser) {
                 console.log("LOGIN SUCCESS");
