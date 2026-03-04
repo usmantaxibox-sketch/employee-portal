@@ -5,16 +5,23 @@ document.getElementById("adminLoginForm").addEventListener("submit", function(e)
     const password = document.getElementById("adminPassword").value.trim();
     const errorMessage = document.getElementById("errorMessage");
 
-    // 🔴 PUT YOUR GOOGLE SCRIPT WEB APP URL HERE
-    const apiURL = "https://script.google.com/macros/s/AKfycbzXcxoFj3ostP-KQW6bcZQwzGZSZ0Vwf-ZkM9AJADG20DhARVvy8DvMG0voe-bhtAbV/exec";
+    const apiURL = "YOUR_WEB_APP_URL_HERE";
 
     fetch(apiURL)
         .then(response => response.json())
-        .then(users => {
+        .then(data => {
 
-            console.log("Sheet Data:", users);
+            console.log("Sheet Data:", data);
 
-            const adminUser = users.find(user =>
+            // 🔥 IMPORTANT FIX HERE
+            const usersArray = data.data || data.users || data;
+
+            if (!Array.isArray(usersArray)) {
+                errorMessage.textContent = "Invalid data format!";
+                return;
+            }
+
+            const adminUser = usersArray.find(user =>
                 String(user.UserID) === userId &&
                 String(user.Password) === password &&
                 String(user.Role).toLowerCase() === "admin" &&
@@ -28,7 +35,7 @@ document.getElementById("adminLoginForm").addEventListener("submit", function(e)
             }
         })
         .catch(error => {
-            console.error("Error:", error);
+            console.error("Fetch Error:", error);
             errorMessage.textContent = "Connection Error!";
         });
 });
