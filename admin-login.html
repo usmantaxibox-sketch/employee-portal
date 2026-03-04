@@ -8,39 +8,42 @@
 <body class="login-body">
 
 <div class="login-card">
+
+    <div class="role-badge">Admin Portal</div>
     <h2>Admin Login</h2>
 
-    <input type="text" id="adminId" placeholder="Admin ID" required>
-    <input type="password" id="adminPassword" placeholder="Password" required>
+    <form id="adminForm">
+        <input type="text" id="adminId" placeholder="Enter Admin ID" required>
+        <input type="password" id="adminPassword" placeholder="Enter Password" required>
 
-    <button class="login-btn" onclick="adminLogin()">Sign In</button>
+        <button type="submit" class="login-btn">Login</button>
+    </form>
 
     <p id="error" style="color:red;"></p>
+
 </div>
 
 <script>
-function adminLogin(){
+document.getElementById("adminForm").addEventListener("submit", function(e){
+
+    e.preventDefault(); // 🚀 VERY IMPORTANT (Stops page refresh)
 
     const id = document.getElementById("adminId").value.trim();
     const pass = document.getElementById("adminPassword").value.trim();
 
-    // 🔐 CHANGE THESE TO YOUR ADMIN LOGIN
     const ADMIN_ID = "admin1";
     const ADMIN_PASS = "1234";
 
     if(id === ADMIN_ID && pass === ADMIN_PASS){
 
-        // ✅ Save role
         sessionStorage.setItem("role", "admin");
-        sessionStorage.setItem("employeeId", id);
-
-        // ✅ Redirect
         window.location.href = "admin-dashboard.html";
 
     } else {
-        document.getElementById("error").innerText = "Invalid Admin ID or Password";
+        document.getElementById("error").innerText = "Invalid Admin Credentials";
     }
-}
+
+});
 </script>
 
 </body>
