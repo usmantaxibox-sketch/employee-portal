@@ -4,7 +4,6 @@ document.getElementById("adminLoginForm").addEventListener("submit", function (e
     const userId = document.getElementById("adminId").value.trim();
     const password = document.getElementById("adminPassword").value.trim();
     const errorMessage = document.getElementById("errorMessage");
-
     const apiURL = "https://script.google.com/macros/s/AKfycbzXcxoFj3ostP-KQW6bcZQwzGZSZ0Vwf-ZkM9AJADG20DhARVvy8DvMG0voe-bhtAbV/exec";
 
     fetch(apiURL)
