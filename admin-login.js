@@ -11,7 +11,7 @@ document.getElementById("adminLoginForm").addEventListener("submit", function (e
         .then(response => response.json())
         .then(data => {
 
-            console.log("FULL DATA:", data);
+            console.log("sheet DATA:", data);
 
             const usersArray = data.users;  // ✅ THIS IS THE CORRECT ONE
 
