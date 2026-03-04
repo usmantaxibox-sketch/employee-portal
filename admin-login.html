@@ -7,16 +7,15 @@
 <body>
 
 <div class="login-container">
-    <div class="portal-badge">Admin Portal</div>
+    <div class="portal-label">Admin Portal</div>
     <h2>Admin Login</h2>
 
     <form id="adminLoginForm">
         <input type="text" id="adminId" placeholder="Enter Admin ID" required>
         <input type="password" id="adminPassword" placeholder="Enter Password" required>
-        <button type="submit">Login</button>
+        <button type="submit" class="login-btn">Login</button>
+        <p id="errorMessage" class="error-message"></p>
     </form>
-
-    <p id="errorMessage" style="color:red;"></p>
 </div>
 
 <script src="admin-login.js"></script>
