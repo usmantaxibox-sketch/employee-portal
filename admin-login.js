@@ -53,7 +53,7 @@ document.getElementById("adminLoginForm").addEventListener("submit", function (e
             });
 
             if (adminUser) {
-                window.location.href = "admin-dashboard.html";
+                window.location.href = "/employee-portal/admin-dashboard.html";
             } else {
                 errorMessage.textContent = "Login Failed!";
             }
