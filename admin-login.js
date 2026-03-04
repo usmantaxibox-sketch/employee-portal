@@ -4,7 +4,8 @@ document.getElementById("adminLoginForm").addEventListener("submit", function (e
     const userId = document.getElementById("adminId").value.trim();
     const password = document.getElementById("adminPassword").value.trim();
     const errorMessage = document.getElementById("errorMessage");
-    const apiURL = "https://script.google.com/macros/s/AKfycbzXcxoFj3ostP-KQW6bcZQwzGZSZ0Vwf-ZkM9AJADG20DhARVvy8DvMG0voe-bhtAbV/exec";
+
+    const apiURL = "https://script.google.com/macros/s/AKfycbzXcxoFj3ostP-KQW6bcZQwzGZSZ0Vwf-ZkM9AJADG20DhARVvy8DvMG0voe-bhtAbV/exec";  // paste same working URL
 
     fetch(apiURL)
         .then(response => response.json())
@@ -12,47 +13,23 @@ document.getElementById("adminLoginForm").addEventListener("submit", function (e
 
             console.log("FULL DATA:", data);
 
-            const usersArray = data.data || data.users || data;
+            const usersArray = data.users;  // ✅ THIS IS THE CORRECT ONE
 
             if (!Array.isArray(usersArray)) {
                 errorMessage.textContent = "Invalid data format!";
                 return;
             }
 
-            console.log("USERS ARRAY:", usersArray);
-
-            const adminUser = usersArray.find(user => {
-
-                // 🔥 Make it flexible (case insensitive column match)
-
-                const sheetUserId =
-                    user.UserID ||
-                    user.userID ||
-                    user["User Id"] ||
-                    user["UserID"];
-
-                const sheetPassword =
-                    user.Password ||
-                    user.password;
-
-                const sheetRole =
-                    user.Role ||
-                    user.role;
-
-                const sheetStatus =
-                    user.Status ||
-                    user.status;
-
-                return (
-                    String(sheetUserId).trim() === userId &&
-                    String(sheetPassword).trim() === password &&
-                    String(sheetRole).toLowerCase() === "admin" &&
-                    String(sheetStatus).toLowerCase() === "active"
-                );
-            });
+            const adminUser = usersArray.find(user =>
+                String(user.UserID).trim() === userId &&
+                String(user.Password).trim() === password &&
+                String(user.Role).toLowerCase() === "admin" &&
+                String(user.Status).toLowerCase() === "active"
+            );
 
             if (adminUser) {
-                window.location.href = "/employee-portal/admin-dashboard.html";
+                console.log("LOGIN SUCCESS");
+                window.location.href = "admin-dashboard.html";
             } else {
                 errorMessage.textContent = "Login Failed!";
             }
