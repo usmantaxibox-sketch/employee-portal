@@ -1,29 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="login-body">
+
 <script>
-if (localStorage.getItem("adminLoggedIn") !== "true") {
+if (sessionStorage.getItem("role") !== "admin") {
     window.location.href = "admin-login.html";
 }
 </script>
-<h2>Generate Salary Slip</h2>
 
-<input type="text" id="salaryRiderID" placeholder="Enter Rider ID">
+<div class="login-card">
+    <h2>Admin Dashboard</h2>
 
-<button onclick="createSalary()">Generate Slip</button>
+    <input type="text" id="searchId" placeholder="Enter Employee ID">
+    <button class="login-btn" onclick="searchEmployee()">Search</button>
 
-<div id="salaryContainer"></div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-<button onclick="logout()">Logout</button>
+    <div id="result"></div>
+    <br>
+    <button class="login-btn" onclick="logout()">Logout</button>
+</div>
 
 <script>
 function logout(){
     sessionStorage.clear();
-    window.location.href = "login.html";
+    window.location.href = "admin-login.html";
+}
+
+function searchEmployee(){
+    const id = document.getElementById("searchId").value;
+
+    fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vRcyRF_oS_SGrk-F-Urp3YhtwbPG2FESw0CfEh7tS-pZ9fJhY6VPLTIGVD1wLD-VZE16htkQMBJ0RNa/pub?output=csv")
+    .then(res => res.text())
+    .then(data => {
+        const rows = data.split("\n");
+        let found = false;
+
+        rows.forEach(row => {
+            const cols = row.split(",");
+
+            if(cols[0] === id){
+                document.getElementById("result").innerHTML = `
+                    <p>Name: ${cols[1]}</p>
+                    <p>Performance: ${cols[2]}</p>
+                    <p>Record: ${cols[3]}</p>
+                `;
+                found = true;
+            }
+        });
+
+        if(!found){
+            document.getElementById("result").innerHTML = "Employee Not Found";
+        }
+    });
 }
 </script>
 
-<script>
-function logout(){
-   sessionStorage.removeItem("adminLoggedIn");
-   window.location.href = "admin-login.html";
-}
-</script>
+</body>
+</html>
