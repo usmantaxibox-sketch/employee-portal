@@ -6,7 +6,7 @@ document.getElementById("adminLoginForm").addEventListener("submit", function(e)
     const errorMessage = document.getElementById("errorMessage");
 
     // 🔴 PUT YOUR GOOGLE SCRIPT WEB APP URL HERE
-    const apiURL = "PASTE_YOUR_WEB_APP_URL_HERE";
+    const apiURL = "https://script.google.com/macros/s/AKfycbzXcxoFj3ostP-KQW6bcZQwzGZSZ0Vwf-ZkM9AJADG20DhARVvy8DvMG0voe-bhtAbV/exec";
 
     fetch(apiURL)
         .then(response => response.json())
