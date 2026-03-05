@@ -1,62 +1,113 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+<title>Admin Dashboard</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+body{
+background:#0f1b2d;
+font-family:Arial;
+color:white;
+padding:30px;
+}
+
+h1{
+margin-bottom:30px;
+}
+
+.table-container{
+background:#182a46;
+padding:20px;
+margin-bottom:40px;
+border-radius:10px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th,td{
+padding:10px;
+border:1px solid #2e4469;
+text-align:left;
+}
+
+th{
+background:#243b63;
+}
+
+</style>
+
 </head>
 
-<body class="login-body">
+<body>
+
+<h1>Admin Dashboard</h1>
+
+<div id="tables"></div>
 
 <script>
-if (sessionStorage.getItem("role") !== "admin") {
-    window.location.href = "admin-login.html";
-}
-</script>
 
-<div class="login-card">
-    <h2>Admin Dashboard</h2>
+const spreadsheetID="1uGI3YTIulDphtao-gX4bsFcBQQNUEEDjYzKydoqSApQ";
 
-    <input type="text" id="searchId" placeholder="Enter Employee ID">
-    <button class="login-btn" onclick="searchEmployee()">Search</button>
+/* LIST YOUR SHEET NAMES HERE */
 
-    <div id="result"></div>
-    <br>
-    <button class="login-btn" onclick="logout()">Logout</button>
+const sheets=[
+"PERFORMANCE",
+"SALARY",
+"VACATION"
+"RIDERS_MASTER"
+"USERS"
+];
+
+const container=document.getElementById("tables");
+
+sheets.forEach(sheet=>{
+
+fetch(`https://opensheet.elk.sh/${spreadsheetID}/${sheet}`)
+.then(res=>res.json())
+.then(data=>{
+
+if(data.length===0)return;
+
+let tableHTML=`
+<div class="table-container">
+<h2>${sheet}</h2>
+<table>
+<thead>
+<tr>
+`;
+
+Object.keys(data[0]).forEach(col=>{
+tableHTML+=`<th>${col}</th>`;
+});
+
+tableHTML+=`</tr></thead><tbody>`;
+
+data.forEach(row=>{
+tableHTML+="<tr>";
+
+Object.values(row).forEach(val=>{
+tableHTML+=`<td>${val}</td>`;
+});
+
+tableHTML+="</tr>";
+});
+
+tableHTML+=`
+</tbody>
+</table>
 </div>
+`;
 
-<script>
-function logout(){
-    sessionStorage.clear();
-    window.location.href = "admin-login.html";
-}
+container.innerHTML+=tableHTML;
 
-function searchEmployee(){
-    const id = document.getElementById("searchId").value;
+});
 
-    fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vRcyRF_oS_SGrk-F-Urp3YhtwbPG2FESw0CfEh7tS-pZ9fJhY6VPLTIGVD1wLD-VZE16htkQMBJ0RNa/pub?output=csv")
-    .then(res => res.text())
-    .then(data => {
-        const rows = data.split("\n");
-        let found = false;
+});
 
-        rows.forEach(row => {
-            const cols = row.split(",");
-
-            if(cols[0] === id){
-                document.getElementById("result").innerHTML = `
-                    <p>Name: ${cols[1]}</p>
-                    <p>Performance: ${cols[2]}</p>
-                    <p>Record: ${cols[3]}</p>
-                `;
-                found = true;
-            }
-        });
-
-        if(!found){
-            document.getElementById("result").innerHTML = "Employee Not Found";
-        }
-    });
-}
 </script>
 
 </body>
